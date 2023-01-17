@@ -13,6 +13,7 @@ import com.alfoirazabal.japanesewordkeeper.R
 import com.alfoirazabal.japanesewordkeeper.db.Database
 import com.alfoirazabal.japanesewordkeeper.gui.constants.BundleConstants
 import com.alfoirazabal.japanesewordkeeper.gui.helpers.PhrasesSorter
+import com.alfoirazabal.japanesewordkeeper.logic.symbolsparsing.SymbolsParser
 
 class MainActivity : AppCompatActivity() {
 
@@ -49,6 +50,9 @@ class MainActivity : AppCompatActivity() {
             intentViewPhrase.putExtra(BundleConstants.phraseId, phraseId)
             startActivity(intentViewPhrase)
         }
+
+        // val symbols = SymbolsParser.parseSymbols("前方の道路には霧が多すぎる。 これは大量虐殺の覇権エリートのグループです。", applicationContext)
+        // println("OK")
 
     }
 

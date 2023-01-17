@@ -9,7 +9,7 @@ object Database {
     private var appDatabase: AppDatabase? = null
 
     private fun getExternalDir(context: Context) : String {
-        val externalPaths = context.getExternalFilesDirs("/")
+        val externalPaths = context.externalMediaDirs
         var lastExternalPath : File? = null
         externalPaths.forEach { externalPath ->
             if (externalPath != null) {
@@ -20,7 +20,7 @@ object Database {
             throw Error("Could not find where to save and load the DB")
         }
         val externalPath = lastExternalPath.toString()
-        return externalPath + "AppDatabase.sqlite"
+        return "$externalPath/AppDatabase.sqlite"
     }
 
     fun get(context : Context): AppDatabase {
