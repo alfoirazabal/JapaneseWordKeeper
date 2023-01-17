@@ -13,7 +13,7 @@ object SymbolsParser {
     private val kanji = ArrayList<KanjiSymbol>()
     private val hiragana = ArrayList<HiraganaSymbol>()
     private val katakana = ArrayList<KatakanaSymbol>()
-    private val ignorableCharacters = arrayListOf("、", "\n", "\r", " ", "")
+    private val ignorableCharacters = arrayListOf("、", "。", "ー", "\n", "\r", " ", "")
 
     fun parseSymbols(phrase : String, context : Context) : FetchedSymbols {
         if (!initialized) {
