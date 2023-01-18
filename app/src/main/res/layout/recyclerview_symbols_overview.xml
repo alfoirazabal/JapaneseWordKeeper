@@ -17,6 +17,7 @@
             android:layout_gravity="center_vertical"
             android:layout_marginEnd="8pt"
             android:text="霧"
+            android:textIsSelectable="true"
             android:textSize="48sp" />
 
         <TextView
@@ -25,6 +26,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
             android:text="TextView"
+            android:textIsSelectable="true"
             android:visibility="gone" />
 
         <LinearLayout
@@ -57,6 +59,7 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:text="TextView"
+                        android:textIsSelectable="true"
                         android:textSize="20sp" />
                 </TableRow>
 
@@ -78,6 +81,7 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:text="TextView"
+                        android:textIsSelectable="true"
                         android:textSize="20sp" />
                 </TableRow>
 
@@ -97,7 +101,8 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:text="TextView" />
+                        android:text="TextView"
+                        android:textIsSelectable="true" />
 
                 </TableRow>
 
@@ -117,7 +122,8 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:text="TextView" />
+                        android:text="TextView"
+                        android:textIsSelectable="true" />
                 </TableRow>
 
                 <TableRow
@@ -136,7 +142,8 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:text="TextView" />
+                        android:text="TextView"
+                        android:textIsSelectable="true" />
                 </TableRow>
 
                 <TableRow
@@ -154,8 +161,9 @@
                         android:id="@+id/txt_kanji_english_meaning"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_weight="1"
                         android:text="TextView"
-                        android:layout_weight="1" />
+                        android:textIsSelectable="true" />
                 </TableRow>
 
                 <TableRow
@@ -176,6 +184,7 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:text="TextView"
+                        android:textIsSelectable="true"
                         android:textSize="20sp" />
                 </TableRow>
             </TableLayout>

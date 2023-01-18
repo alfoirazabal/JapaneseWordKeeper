@@ -13,7 +13,6 @@ import com.alfoirazabal.japanesewordkeeper.R
 import com.alfoirazabal.japanesewordkeeper.db.Database
 import com.alfoirazabal.japanesewordkeeper.gui.constants.BundleConstants
 import com.alfoirazabal.japanesewordkeeper.gui.helpers.PhrasesSorter
-import com.alfoirazabal.japanesewordkeeper.logic.symbolsparsing.SymbolsParser
 
 class MainActivity : AppCompatActivity() {
 
