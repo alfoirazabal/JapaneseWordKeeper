@@ -18,6 +18,16 @@
         <item name="android:textColor">@color/black</item>
     </style>
 
+    <style name="Theme.JapaneseWordKeeper.Characters.Hiragana" parent="Theme.JapaneseWordKeeper">
+        <item name="android:textColor">#494</item>
+    </style>
+    <style name="Theme.JapaneseWordKeeper.Characters.Katakana" parent="Theme.JapaneseWordKeeper">
+        <item name="android:textColor">#449</item>
+    </style>
+    <style name="Theme.JapaneseWordKeeper.Characters.Kanji" parent="Theme.JapaneseWordKeeper">
+        <item name="android:textColor">#944</item>
+    </style>
+
     <style name="Theme.JapaneseWordKeeper.NoActionBar">
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>

@@ -36,4 +36,17 @@
     <string name="preference_file_name">Preferences</string>
     <string name="preferences_last_text_language_index">last_text_language_index</string>
     <string name="preferences_last_phrase_order">last_phrase_order</string>
+    <string name="symbols_overview">Symbols overview</string>
+    <string name="old_symbol">Old symbol</string>
+    <string name="radical">Radical</string>
+    <string name="strokes">Strokes</string>
+    <string name="grade">Grade</string>
+    <string name="year_added">Year added</string>
+    <string name="english_meaning">English meaning</string>
+    <string name="reading">Reading</string>
+    <string name="auto_translate">Auto translate</string>
+    <string name="english_to_japanese">English to Japanese</string>
+    <string name="spanish_to_japanese">Spanish to Japanese</string>
+    <string name="downloading">Downloading...</string>
+    <string name="downloaded">Downloaded</string>
 </resources>

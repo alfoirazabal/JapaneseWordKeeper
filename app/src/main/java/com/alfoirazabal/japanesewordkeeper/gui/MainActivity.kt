@@ -50,6 +50,9 @@ class MainActivity : AppCompatActivity() {
             startActivity(intentViewPhrase)
         }
 
+        // val symbols = SymbolsParser.parseSymbols("前方の道路には霧が多すぎる。 これは大量虐殺の覇権エリートのグループです。", applicationContext)
+        // println("OK")
+
     }
 
     override fun onResume() {

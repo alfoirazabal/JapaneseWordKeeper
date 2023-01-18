@@ -8,6 +8,8 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.alfoirazabal.japanesewordkeeper.R
 import com.alfoirazabal.japanesewordkeeper.db.Database
 import com.alfoirazabal.japanesewordkeeper.db.entities.Phrase
@@ -27,6 +29,7 @@ class ViewPhrase : AppCompatActivity() {
     private lateinit var txtDateCreated : TextView
     private lateinit var txtDateModified : TextView
     private lateinit var txtDateLastAccessed : TextView
+    private lateinit var recyclerViewSymbolsOverview : RecyclerView
     private lateinit var btnEdit : Button
     private lateinit var btnDelete : Button
 
@@ -36,6 +39,8 @@ class ViewPhrase : AppCompatActivity() {
     private var phrase : Phrase? = null
 
     private var firstTimeAccessed : Boolean = true
+
+    private lateinit var adapterPhraseCharacters : PhraseAdapterCharacters
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -49,8 +54,13 @@ class ViewPhrase : AppCompatActivity() {
         txtDateCreated = findViewById(R.id.txt_date_created)
         txtDateModified = findViewById(R.id.txt_date_modified)
         txtDateLastAccessed = findViewById(R.id.txt_date_last_accessed)
+        recyclerViewSymbolsOverview = findViewById(R.id.recyclerview_symbols_overview)
         btnEdit = findViewById(R.id.btn_edit)
         btnDelete = findViewById(R.id.btn_delete)
+
+        adapterPhraseCharacters = PhraseAdapterCharacters()
+        recyclerViewSymbolsOverview.layoutManager = LinearLayoutManager(applicationContext)
+        recyclerViewSymbolsOverview.adapter = adapterPhraseCharacters
 
         phraseId = intent.getStringExtra(BundleConstants.phraseId)!!
 
@@ -129,6 +139,9 @@ class ViewPhrase : AppCompatActivity() {
                 txtDateCreated.text = phrase!!.dateCreated.toString()
                 txtDateModified.text = phrase!!.dateModified.toString()
                 txtDateLastAccessed.text = phrase!!.dateLastAccessed.toString()
+
+                adapterPhraseCharacters.setPhrase(phrase!!.translation, applicationContext)
+                adapterPhraseCharacters.notifyDataSetChanged()
             }
         }.start()
     }
