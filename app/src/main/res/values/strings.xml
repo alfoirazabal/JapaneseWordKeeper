@@ -47,6 +47,8 @@
     <string name="auto_translate">Auto translate</string>
     <string name="english_to_japanese">English to Japanese</string>
     <string name="spanish_to_japanese">Spanish to Japanese</string>
+    <string name="japanese_to_english">Japanese to English</string>
+    <string name="japanese_to_spanish">Japanese to Spanish</string>
     <string name="downloading">Downloading...</string>
     <string name="downloaded">Downloaded</string>
 </resources>

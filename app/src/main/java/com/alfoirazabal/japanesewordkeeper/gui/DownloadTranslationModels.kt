@@ -17,6 +17,11 @@ class DownloadTranslationModels : AppCompatActivity() {
     private lateinit var pbrDownloadingEnglishToJapanese : ProgressBar
     private lateinit var txtDownloadingSpanishToJapanese : TextView
     private lateinit var pbrDownloadingSpanishToJapanese : ProgressBar
+    private lateinit var txtDownloadingJapaneseToEnglish : TextView
+    private lateinit var pbrDownloadingJapaneseToEnglish : ProgressBar
+    private lateinit var txtDownloadingJapaneseToSpanish : TextView
+    private lateinit var pbrDownloadingJapaneseToSpanish : ProgressBar
+
     private lateinit var btnOk : Button
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -27,6 +32,10 @@ class DownloadTranslationModels : AppCompatActivity() {
         pbrDownloadingEnglishToJapanese = findViewById(R.id.pbr_downloading_english_to_japanese)
         txtDownloadingSpanishToJapanese = findViewById(R.id.txt_downloading_spanish_to_japanese)
         pbrDownloadingSpanishToJapanese = findViewById(R.id.pbr_downloading_spanish_to_japanese)
+        txtDownloadingJapaneseToEnglish = findViewById(R.id.txt_downloading_japanese_to_english)
+        pbrDownloadingJapaneseToEnglish = findViewById(R.id.pbr_downloading_japanese_to_english)
+        txtDownloadingJapaneseToSpanish = findViewById(R.id.txt_downloading_japanese_to_spanish)
+        pbrDownloadingJapaneseToSpanish = findViewById(R.id.pbr_downloading_japanese_to_spanish)
         btnOk = findViewById(R.id.btn_ok)
     }
 
@@ -40,8 +49,18 @@ class DownloadTranslationModels : AppCompatActivity() {
             .setSourceLanguage(TranslateLanguage.SPANISH)
             .setTargetLanguage(TranslateLanguage.JAPANESE)
             .build()
+        val optionsJapaneseToEnglish = TranslatorOptions.Builder()
+            .setSourceLanguage(TranslateLanguage.JAPANESE)
+            .setTargetLanguage(TranslateLanguage.ENGLISH)
+            .build()
+        val optionsJapaneseToSpanish = TranslatorOptions.Builder()
+            .setSourceLanguage(TranslateLanguage.JAPANESE)
+            .setTargetLanguage(TranslateLanguage.SPANISH)
+            .build()
         val englishJapaneseTranslator = Translation.getClient(optionsEnglishToJapanese)
         val spanishJapaneseTranslator = Translation.getClient(optionsSpanishToJapanese)
+        val japaneseToEnglishTranslator = Translation.getClient(optionsJapaneseToEnglish)
+        val japaneseToSpanishTranslator = Translation.getClient(optionsJapaneseToSpanish)
         englishJapaneseTranslator.downloadModelIfNeeded()
             .addOnSuccessListener {
                 txtDownloadingEnglishToJapanese.text = getString(R.string.downloaded)
@@ -54,6 +73,22 @@ class DownloadTranslationModels : AppCompatActivity() {
             .addOnSuccessListener {
                 txtDownloadingSpanishToJapanese.text = getString(R.string.downloaded)
                 pbrDownloadingSpanishToJapanese.visibility = View.GONE
+            }
+            .addOnFailureListener { exception ->
+                throw Error(exception)
+            }
+        japaneseToEnglishTranslator.downloadModelIfNeeded()
+            .addOnSuccessListener {
+                txtDownloadingJapaneseToEnglish.text = getString(R.string.downloaded)
+                pbrDownloadingJapaneseToEnglish.visibility = View.GONE
+            }
+            .addOnFailureListener { exception ->
+                throw Error(exception)
+            }
+        japaneseToSpanishTranslator.downloadModelIfNeeded()
+            .addOnSuccessListener {
+                txtDownloadingJapaneseToSpanish.text = getString(R.string.downloaded)
+                pbrDownloadingJapaneseToSpanish.visibility = View.GONE
             }
             .addOnFailureListener { exception ->
                 throw Error(exception)
