@@ -9,6 +9,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.alfoirazabal.japanesewordkeeper.R
 import com.alfoirazabal.japanesewordkeeper.db.Database
 import com.alfoirazabal.japanesewordkeeper.db.entities.Phrase
+import com.alfoirazabal.japanesewordkeeper.gui.guihelpers.AutoTranslateHandler
 import com.alfoirazabal.japanesewordkeeper.gui.guiitems.SpinnerLanguageSetup
 
 class AddPhrase : AppCompatActivity() {
@@ -19,6 +20,7 @@ class AddPhrase : AppCompatActivity() {
 
         val spinnerLanguage = findViewById<Spinner>(R.id.spinner_language)
         val etxtText = findViewById<EditText>(R.id.etxt_text)
+        val btnAutoTranslate = findViewById<Button>(R.id.btn_auto_translate)
         val etxtRomaji = findViewById<EditText>(R.id.etxt_romaji)
         val etxtTranslation = findViewById<EditText>(R.id.etxt_translation)
         val btnAdd = findViewById<Button>(R.id.btn_add)
@@ -42,6 +44,15 @@ class AddPhrase : AppCompatActivity() {
                     finish()
                 }
             }.start()
+        }
+
+        btnAutoTranslate.setOnClickListener {
+            AutoTranslateHandler(
+                activity = this,
+                spinnerLanguage = spinnerLanguage,
+                etxtText = etxtText,
+                etxtTranslation = etxtTranslation
+            ).handle()
         }
 
         val sharedPreferences = applicationContext.getSharedPreferences(

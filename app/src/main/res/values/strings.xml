@@ -44,4 +44,9 @@
     <string name="year_added">Year added</string>
     <string name="english_meaning">English meaning</string>
     <string name="reading">Reading</string>
+    <string name="auto_translate">Auto translate</string>
+    <string name="english_to_japanese">English to Japanese</string>
+    <string name="spanish_to_japanese">Spanish to Japanese</string>
+    <string name="downloading">Downloading...</string>
+    <string name="downloaded">Downloaded</string>
 </resources>
