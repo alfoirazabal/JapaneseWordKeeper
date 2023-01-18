@@ -1,16 +1,19 @@
 package com.alfoirazabal.japanesewordkeeper.logic.wordstokenization
 
-import com.google.mlkit.common.MlKitException
-import com.google.mlkit.nl.translate.TranslateLanguage
-import com.google.mlkit.nl.translate.Translation
-import com.google.mlkit.nl.translate.TranslatorOptions
+import android.content.Context
 import org.apache.lucene.analysis.Analyzer
+import org.apache.lucene.analysis.CharArraySet
 import org.apache.lucene.analysis.ja.JapaneseAnalyzer
+import org.apache.lucene.analysis.ja.JapaneseTokenizer
 import org.apache.lucene.analysis.tokenattributes.CharTermAttribute
 import org.apache.lucene.util.Version
 import java.io.StringReader
+import kotlin.collections.ArrayList
+import kotlin.collections.HashSet
 
-class JWKTokenizer {
+class JWKTokenizer(
+    val context : Context
+) {
 
     class Word(
         val japanese : String,
@@ -18,14 +21,20 @@ class JWKTokenizer {
     )
 
     private fun buildAnalyzer() : Analyzer {
-        return JapaneseAnalyzer(Version.LUCENE_36)
+        val charArraySet = CharArraySet(Version.LUCENE_36, 0, false)
+        val stopTags = HashSet<String>()
+        return JapaneseAnalyzer(
+            Version.LUCENE_36,
+            null,
+            JapaneseTokenizer.DEFAULT_MODE,
+            charArraySet,
+            stopTags
+        )
     }
 
-    var onWordFetched : (words : Word) -> Unit = { }
-    var onFinished : () -> Unit = { }
-    var onTranslationUnavailable : () -> Unit = { }
+    fun fetchWords(phrase : String) : MutableList<Word> {
+        val words = ArrayList<Word>()
 
-    fun fetchWords(phrase : String, translationLanguage : String) {
         val analyzer = this.buildAnalyzer()
 
         val tokens = ArrayList<String>()
@@ -38,48 +47,25 @@ class JWKTokenizer {
         tokenStream.close()
         analyzer.close()
 
-        val translatorOptions : TranslatorOptions
-        when (translationLanguage) {
-            "en" -> {
-                translatorOptions = TranslatorOptions.Builder()
-                    .setSourceLanguage(TranslateLanguage.JAPANESE)
-                    .setTargetLanguage(TranslateLanguage.ENGLISH)
-                    .build()
-            }
-            "es" -> {
-                translatorOptions = TranslatorOptions.Builder()
-                    .setSourceLanguage(TranslateLanguage.JAPANESE)
-                    .setTargetLanguage(TranslateLanguage.SPANISH)
-                    .build()
-            }
-            else -> {
-                throw Error("No known translation language: " + translationLanguage)
-            }
-        }
-        val translator = Translation.getClient(translatorOptions)
-        for (i in 0 until tokens.size) {
-            val token = tokens[i]
-            translator.translate(token)
-                .addOnSuccessListener { translation ->
-                    val word = Word(japanese = token, translation = translation)
-                    this.onWordFetched.invoke(word)
-                    if (i == tokens.size - 1) {
-                        this.onFinished.invoke()
-                    }
+        val dictionaryJapaneseToEnglish = DictionaryJapaneseToEnglish(context)
+        for (token in tokens) {
+            val definitions = dictionaryJapaneseToEnglish.define(token)
+            var definitionsText = ""
+            val definitionsIterator = definitions.iterator()
+            while (definitionsIterator.hasNext()) {
+                definitionsText += definitionsIterator.next().definitions.contentToString()
+                if (definitionsIterator.hasNext()) {
+                    definitionsText += "\n"
                 }
-                .addOnFailureListener { exception ->
-                    if (exception is MlKitException) {
-                        if (exception.errorCode == MlKitException.NOT_FOUND) {
-                            this.onTranslationUnavailable.invoke()
-                        } else {
-                            throw exception
-                        }
-                    } else {
-                        throw exception
-                    }
-                }
+            }
+            val word = Word(
+                    japanese = token,
+                    translation = definitionsText
+            )
+            words.add(word)
         }
 
+        return words
     }
 
 }

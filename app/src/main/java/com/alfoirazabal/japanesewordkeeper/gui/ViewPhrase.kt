@@ -14,6 +14,7 @@ import com.alfoirazabal.japanesewordkeeper.R
 import com.alfoirazabal.japanesewordkeeper.db.Database
 import com.alfoirazabal.japanesewordkeeper.db.entities.Phrase
 import com.alfoirazabal.japanesewordkeeper.gui.constants.BundleConstants
+import com.alfoirazabal.japanesewordkeeper.logic.wordstokenization.JWKTokenizer
 import com.google.android.material.snackbar.Snackbar
 import java.util.*
 
@@ -139,6 +140,10 @@ class ViewPhrase : AppCompatActivity() {
                 txtDateCreated.text = phrase!!.dateCreated.toString()
                 txtDateModified.text = phrase!!.dateModified.toString()
                 txtDateLastAccessed.text = phrase!!.dateLastAccessed.toString()
+
+                val tokenizer = JWKTokenizer(applicationContext)
+                val words = tokenizer.fetchWords(phrase!!.translation)
+                println(words)
 
                 adapterPhraseCharacters.setPhrase(phrase!!.translation, applicationContext)
                 adapterPhraseCharacters.notifyDataSetChanged()
