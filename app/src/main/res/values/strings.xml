@@ -15,6 +15,8 @@
     <string name="emoji_romaji">🔤</string>
     <string name="translation">Translation</string>
     <string name="emoji_translation">🇯🇵</string>
+    <string name="emoji_spanish_flag">🇪🇸</string>
+    <string name="emoji_us_flag">🇺🇸</string>
     <string-array name="text_languages">
         <item>🇺🇸 English</item>
         <item>🇪🇸 Spanish</item>

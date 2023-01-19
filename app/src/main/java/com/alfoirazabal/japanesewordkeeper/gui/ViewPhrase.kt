@@ -24,6 +24,8 @@ class ViewPhrase : AppCompatActivity() {
     private lateinit var txtRomaji : TextView
     private lateinit var txtTranslation : TextView
     private lateinit var imgPlayTranslationSound : ImageView
+    private lateinit var btnWordAnalysis : Button
+    private lateinit var btnSymbolsOverview : Button
     private lateinit var txtDateCreated : TextView
     private lateinit var txtDateModified : TextView
     private lateinit var txtDateLastAccessed : TextView
@@ -46,6 +48,8 @@ class ViewPhrase : AppCompatActivity() {
         txtRomaji = findViewById(R.id.txt_romaji)
         txtTranslation = findViewById(R.id.txt_translation)
         imgPlayTranslationSound = findViewById(R.id.img_hear_translation)
+        btnWordAnalysis = findViewById(R.id.btn_word_analysis)
+        btnSymbolsOverview = findViewById(R.id.btn_symbols_overview)
         txtDateCreated = findViewById(R.id.txt_date_created)
         txtDateModified = findViewById(R.id.txt_date_modified)
         txtDateLastAccessed = findViewById(R.id.txt_date_last_accessed)
@@ -97,6 +101,12 @@ class ViewPhrase : AppCompatActivity() {
                     Snackbar.LENGTH_LONG
                 ).show()
             }
+        }
+
+        btnSymbolsOverview.setOnClickListener {
+            val intentSymbolsOverview = Intent(applicationContext, SymbolsOverview::class.java)
+            intentSymbolsOverview.putExtra(BundleConstants.phraseId, phraseId)
+            startActivity(intentSymbolsOverview)
         }
 
     }
