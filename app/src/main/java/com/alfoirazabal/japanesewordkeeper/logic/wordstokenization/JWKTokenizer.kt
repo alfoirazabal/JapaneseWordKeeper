@@ -15,9 +15,13 @@ class JWKTokenizer(
     val context : Context
 ) {
 
+    class Meaning(
+        val subMeanings : Array<String>,
+        val pronunciation : String
+    )
     class Word(
         val japanese : String,
-        val translation : String
+        val meanings : Array<Meaning>
     )
 
     private fun buildAnalyzer() : Analyzer {
@@ -50,17 +54,17 @@ class JWKTokenizer(
         val dictionaryJapaneseToEnglish = DictionaryJapaneseToEnglish(context)
         for (token in tokens) {
             val definitions = dictionaryJapaneseToEnglish.define(token)
-            var definitionsText = ""
-            val definitionsIterator = definitions.iterator()
-            while (definitionsIterator.hasNext()) {
-                definitionsText += definitionsIterator.next().definitions.contentToString()
-                if (definitionsIterator.hasNext()) {
-                    definitionsText += "\n"
-                }
+            val meanings = ArrayList<Meaning>(definitions.size)
+            definitions.forEach {
+                val meaning = Meaning(
+                    subMeanings = it.definitions,
+                    pronunciation = it.pronunciation
+                )
+                meanings.add(meaning)
             }
             val word = Word(
                     japanese = token,
-                    translation = definitionsText
+                    meanings = meanings.toTypedArray()
             )
             words.add(word)
         }

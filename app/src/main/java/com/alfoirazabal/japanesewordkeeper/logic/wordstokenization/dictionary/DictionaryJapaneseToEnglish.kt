@@ -51,15 +51,17 @@ class DictionaryJapaneseToEnglish(private var context: Context) {
     }
 
     fun define(word : String) : List<Definition> {
-        // TODO must be optimized READ THE COMMENTS BELOW
-        /*
-            When looping through the definitions, if it finds the word, then it should keep
-            looking for the next word next to the current word. (The dictionary is sorted)
-            If it finds the same word with another definition, okay, but if it doesn't then
-            it should not keep looking and wasting resources.
-        */
-        val definitionsForWord = definitions.filter {
-            it.word == word || it.word == "$word "
+        val definitionsForWord = ArrayList<Definition>()
+        var found = false
+        for (definition in definitions) {
+            if (definition.word == word || definition.word == "$word ") {
+                definitionsForWord.add(definition)
+                found = true
+            } else {
+                if (found) {
+                    break
+                }
+            }
         }
         return definitionsForWord
     }
