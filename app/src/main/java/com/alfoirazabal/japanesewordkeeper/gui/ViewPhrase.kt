@@ -109,6 +109,12 @@ class ViewPhrase : AppCompatActivity() {
             startActivity(intentSymbolsOverview)
         }
 
+        btnWordAnalysis.setOnClickListener {
+            val intentViewWordsAnalysis = Intent(applicationContext, WordsAnalysis::class.java)
+            intentViewWordsAnalysis.putExtra(BundleConstants.phraseId, phraseId)
+            startActivity(intentViewWordsAnalysis)
+        }
+
     }
 
     override fun onResume() {
