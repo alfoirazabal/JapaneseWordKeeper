@@ -45,17 +45,18 @@ class WordsAnalysis : AppCompatActivity() {
         val database = Database.get(applicationContext)
         Thread {
             val phrase = database.phrasesDAO().getById(phraseId)
+            wordsAnalysisAdapter.phrase = phrase
+            wordsAnalysisAdapter.processPhrase(applicationContext)
             runOnUiThread {
                 txtLanguage.text = PhraseLanguageCommons(applicationContext, phrase).getFlagEmoji()
                 txtText.text = phrase.text
                 if (phrase.romaji != "") {
-                    txtRomaji.text = phrase.text
+                    txtRomaji.text = phrase.romaji
                     layoutRomaji.visibility = View.VISIBLE
                 } else {
                     layoutRomaji.visibility = View.GONE
                 }
                 txtTranslation.text = phrase.translation
-                wordsAnalysisAdapter.setPhrase(phrase, applicationContext)
                 wordsAnalysisAdapter.notifyDataSetChanged()
             }
         }.start()

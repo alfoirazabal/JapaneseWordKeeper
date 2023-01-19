@@ -37,13 +37,22 @@
     <View
         android:id="@+id/divider12"
         android:layout_width="match_parent"
-        android:layout_height="1dp"
+        android:layout_height="2dp"
         android:layout_marginTop="2pt"
         android:layout_marginBottom="2pt"
         android:background="?android:attr/listDivider" />
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerview_japanese_word_meanings"
+    <LinearLayout
+        android:id="@+id/layout_word_meanings"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="match_parent"
+        android:orientation="vertical"></LinearLayout>
+
+    <View
+        android:id="@+id/divider17"
+        android:layout_width="match_parent"
+        android:layout_height="4dp"
+        android:layout_marginTop="2dp"
+        android:layout_marginBottom="4dp"
+        android:background="?android:attr/listDivider" />
 </LinearLayout>
