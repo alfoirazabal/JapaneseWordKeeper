@@ -20,6 +20,7 @@
         <item>🇪🇸 Spanish</item>
     </string-array>
     <string name="phrase_info">Phrase info</string>
+    <string name="phrase_analysis">Phrase analysis</string>
     <string name="date_created">Date created</string>
     <string name="date_modified">Date modified</string>
     <string name="date_last_access">Last accessed</string>
@@ -36,6 +37,7 @@
     <string name="preference_file_name">Preferences</string>
     <string name="preferences_last_text_language_index">last_text_language_index</string>
     <string name="preferences_last_phrase_order">last_phrase_order</string>
+    <string name="word_analysis">Word analysis</string>
     <string name="symbols_overview">Symbols overview</string>
     <string name="old_symbol">Old symbol</string>
     <string name="radical">Radical</string>

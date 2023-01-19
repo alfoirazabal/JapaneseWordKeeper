@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.alfoirazabal.japanesewordkeeper.R
 import com.alfoirazabal.japanesewordkeeper.db.Database
+import com.alfoirazabal.japanesewordkeeper.gui.adapters.PhraseAdapter
 import com.alfoirazabal.japanesewordkeeper.gui.constants.BundleConstants
 import com.alfoirazabal.japanesewordkeeper.gui.helpers.PhrasesSorter
 

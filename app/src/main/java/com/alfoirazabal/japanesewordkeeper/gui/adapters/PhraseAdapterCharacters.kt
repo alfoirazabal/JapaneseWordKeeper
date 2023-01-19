@@ -1,4 +1,4 @@
-package com.alfoirazabal.japanesewordkeeper.gui
+package com.alfoirazabal.japanesewordkeeper.gui.adapters
 
 import android.content.Context
 import android.view.LayoutInflater
