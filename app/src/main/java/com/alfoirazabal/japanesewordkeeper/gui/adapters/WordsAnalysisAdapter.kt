@@ -1,6 +1,7 @@
 package com.alfoirazabal.japanesewordkeeper.gui.adapters
 
 import android.content.Context
+import android.graphics.Color
 import android.graphics.Typeface
 import android.view.Gravity
 import android.view.LayoutInflater
@@ -15,6 +16,11 @@ import com.alfoirazabal.japanesewordkeeper.logic.romaji.HiraKataRomajinizer
 import com.alfoirazabal.japanesewordkeeper.logic.wordstokenization.JWKTokenizer
 
 class WordsAnalysisAdapter : RecyclerView.Adapter<WordsAnalysisAdapter.ViewHolder>() {
+
+    private var defaultOrderTextColor : Int = 0
+    private var defaultJapaneseWordTextColor : Int = 0
+
+    val highlitedWords : MutableList<JWKTokenizer.Word> = ArrayList()
 
     private val romajinizer = HiraKataRomajinizer()
 
@@ -44,6 +50,10 @@ class WordsAnalysisAdapter : RecyclerView.Adapter<WordsAnalysisAdapter.ViewHolde
     override fun onCreateViewHolder(viewGroup: ViewGroup, viewType: Int): ViewHolder {
         val view = LayoutInflater.from(viewGroup.context)
             .inflate(R.layout.recyclerview_japanese_word, viewGroup, false)
+        defaultOrderTextColor =
+            view.findViewById<TextView>(R.id.txt_order).currentTextColor
+        defaultJapaneseWordTextColor =
+            view.findViewById<TextView>(R.id.txt_japanese_word).currentTextColor
         return ViewHolder(view)
     }
 
@@ -88,6 +98,23 @@ class WordsAnalysisAdapter : RecyclerView.Adapter<WordsAnalysisAdapter.ViewHolde
         holder.layoutWordMeanings.removeAllViews()
         for (meaning in word.meanings) {
             this.printWordMeaning(holder, word, meaning)
+        }
+        val setWordHighlight = fun(_: View) {
+            if (this.highlitedWords.contains(word)) {
+                this.highlitedWords.remove(word)
+            } else {
+                this.highlitedWords.add(word)
+            }
+            this.notifyItemChanged(position)
+        }
+        holder.txtOrder.setOnClickListener(setWordHighlight)
+        holder.txtJapaneseWord.setOnClickListener(setWordHighlight)
+        if (this.highlitedWords.contains(word)) {
+            holder.txtOrder.setTextColor(Color.RED)
+            holder.txtJapaneseWord.setTextColor(Color.RED)
+        } else {
+            holder.txtOrder.setTextColor(defaultOrderTextColor)
+            holder.txtJapaneseWord.setTextColor(defaultJapaneseWordTextColor)
         }
     }
 
