@@ -55,4 +55,6 @@
     <string name="japanese_to_spanish">Japanese to Spanish</string>
     <string name="downloading">Downloading...</string>
     <string name="downloaded">Downloaded</string>
+    <string name="msg_downloading_languages_check_notifications">Translation languages are being downloaded. Check the notifications for progress...</string>
+    <string name="msg_translation_languages_download_finished">Translation languages download finished</string>
 </resources>
