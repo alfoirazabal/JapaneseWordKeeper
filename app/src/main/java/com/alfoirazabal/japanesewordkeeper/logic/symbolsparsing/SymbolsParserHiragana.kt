@@ -52,6 +52,7 @@ class SymbolsParserHiragana {
 
         hiraganaSymbols.add(HiraganaSymbol(symbol = "や", pronunciation = "ya"))
         hiraganaSymbols.add(HiraganaSymbol(symbol = "ゆ", pronunciation = "yu"))
+        hiraganaSymbols.add(HiraganaSymbol(symbol = "エ", pronunciation = "ye"))
         hiraganaSymbols.add(HiraganaSymbol(symbol = "よ", pronunciation = "yo"))
 
         hiraganaSymbols.add(HiraganaSymbol(symbol = "ら", pronunciation = "ra"))
@@ -94,6 +95,63 @@ class SymbolsParserHiragana {
         hiraganaSymbols.add(HiraganaSymbol(symbol = "ぷ", pronunciation = "pu"))
         hiraganaSymbols.add(HiraganaSymbol(symbol = "ぺ", pronunciation = "pe"))
         hiraganaSymbols.add(HiraganaSymbol(symbol = "ぽ", pronunciation = "po"))
+
+        hiraganaSymbols.add(HiraganaSymbol(symbol = "ん", pronunciation = "n"))
+
+        return hiraganaSymbols
+    }
+
+    fun getDigraphs() : List<HiraganaSymbol> {
+
+        val hiraganaSymbols = ArrayList<HiraganaSymbol>()
+
+        hiraganaSymbols.add(HiraganaSymbol(symbol = "きゃ", pronunciation = "kya"))
+        hiraganaSymbols.add(HiraganaSymbol(symbol = "きゅ", pronunciation = "kyu"))
+        hiraganaSymbols.add(HiraganaSymbol(symbol = "きょ", pronunciation = "kyo"))
+
+        hiraganaSymbols.add(HiraganaSymbol(symbol = "しゃ", pronunciation = "sha"))
+        hiraganaSymbols.add(HiraganaSymbol(symbol = "しゅ", pronunciation = "shu"))
+        hiraganaSymbols.add(HiraganaSymbol(symbol = "しょ", pronunciation = "sho"))
+
+        hiraganaSymbols.add(HiraganaSymbol(symbol = "ちゃ", pronunciation = "cha"))
+        hiraganaSymbols.add(HiraganaSymbol(symbol = "ちゅ", pronunciation = "chu"))
+        hiraganaSymbols.add(HiraganaSymbol(symbol = "ちょ", pronunciation = "cho"))
+
+        hiraganaSymbols.add(HiraganaSymbol(symbol = "にゃ", pronunciation = "nya"))
+        hiraganaSymbols.add(HiraganaSymbol(symbol = "にゅ", pronunciation = "nyu"))
+        hiraganaSymbols.add(HiraganaSymbol(symbol = "にょ", pronunciation = "nyo"))
+
+        hiraganaSymbols.add(HiraganaSymbol(symbol = "ひゃ", pronunciation = "hya"))
+        hiraganaSymbols.add(HiraganaSymbol(symbol = "ひゅ", pronunciation = "hyu"))
+        hiraganaSymbols.add(HiraganaSymbol(symbol = "ひょ", pronunciation = "hyo"))
+
+        hiraganaSymbols.add(HiraganaSymbol(symbol = "みゃ", pronunciation = "mya"))
+        hiraganaSymbols.add(HiraganaSymbol(symbol = "みゅ", pronunciation = "myu"))
+        hiraganaSymbols.add(HiraganaSymbol(symbol = "みょ", pronunciation = "myo"))
+
+        hiraganaSymbols.add(HiraganaSymbol(symbol = "りゃ", pronunciation = "rya"))
+        hiraganaSymbols.add(HiraganaSymbol(symbol = "りゅ", pronunciation = "ryu"))
+        hiraganaSymbols.add(HiraganaSymbol(symbol = "りょ", pronunciation = "ryo"))
+
+        hiraganaSymbols.add(HiraganaSymbol(symbol = "ぎゃ", pronunciation = "gya"))
+        hiraganaSymbols.add(HiraganaSymbol(symbol = "ぎゅ", pronunciation = "gyu"))
+        hiraganaSymbols.add(HiraganaSymbol(symbol = "ぎょ", pronunciation = "gyo"))
+
+        hiraganaSymbols.add(HiraganaSymbol(symbol = "じゃ", pronunciation = "ja"))
+        hiraganaSymbols.add(HiraganaSymbol(symbol = "じゅ", pronunciation = "ju"))
+        hiraganaSymbols.add(HiraganaSymbol(symbol = "じょ", pronunciation = "jo"))
+
+        hiraganaSymbols.add(HiraganaSymbol(symbol = "ぢゃ", pronunciation = "ja"))
+        hiraganaSymbols.add(HiraganaSymbol(symbol = "ぢゅ", pronunciation = "ju"))
+        hiraganaSymbols.add(HiraganaSymbol(symbol = "ぢょ", pronunciation = "jo"))
+
+        hiraganaSymbols.add(HiraganaSymbol(symbol = "びゃ", pronunciation = "bya"))
+        hiraganaSymbols.add(HiraganaSymbol(symbol = "びゅ", pronunciation = "byu"))
+        hiraganaSymbols.add(HiraganaSymbol(symbol = "びょ", pronunciation = "byo"))
+
+        hiraganaSymbols.add(HiraganaSymbol(symbol = "ぴゃ", pronunciation = "pya"))
+        hiraganaSymbols.add(HiraganaSymbol(symbol = "ぴゅ", pronunciation = "pyu"))
+        hiraganaSymbols.add(HiraganaSymbol(symbol = "ぴょ", pronunciation = "pyo"))
 
         return hiraganaSymbols
     }
