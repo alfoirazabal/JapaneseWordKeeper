@@ -9,11 +9,15 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.alfoirazabal.japanesewordkeeper.R
 import com.alfoirazabal.japanesewordkeeper.db.Database
+import com.alfoirazabal.japanesewordkeeper.db.entities.Phrase
 import com.alfoirazabal.japanesewordkeeper.gui.adapters.WordsAnalysisAdapter
 import com.alfoirazabal.japanesewordkeeper.gui.constants.BundleConstants
 import com.alfoirazabal.japanesewordkeeper.gui.guihelpers.PhraseLanguageCommons
+import com.alfoirazabal.japanesewordkeeper.gui.guihelpers.WordTextViewHighlighter
 
 class WordsAnalysis : AppCompatActivity() {
+
+    private lateinit var wordTextViewHighlighter : WordTextViewHighlighter
 
     private lateinit var txtLanguage : TextView
     private lateinit var txtText : TextView
@@ -22,6 +26,8 @@ class WordsAnalysis : AppCompatActivity() {
     private lateinit var txtTranslation : TextView
 
     private lateinit var wordsAnalysisAdapter: WordsAnalysisAdapter
+
+    private var phrase : Phrase? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -37,6 +43,15 @@ class WordsAnalysis : AppCompatActivity() {
 
         wordsAnalysisAdapter = WordsAnalysisAdapter()
         recyclerViewWordsAnalysis.adapter = wordsAnalysisAdapter
+
+        wordTextViewHighlighter = WordTextViewHighlighter(txtTranslation)
+
+        wordsAnalysisAdapter.onWordHighlightChanged = {
+            val highlightedJapaneseWords = wordsAnalysisAdapter.highlightedWords.map { it.japanese }
+            if (phrase != null) {
+                wordTextViewHighlighter.stylize(phrase!!.translation, highlightedJapaneseWords)
+            }
+        }
     }
 
     override fun onResume() {
@@ -44,19 +59,19 @@ class WordsAnalysis : AppCompatActivity() {
         val phraseId = intent.getStringExtra(BundleConstants.phraseId)!!
         val database = Database.get(applicationContext)
         Thread {
-            val phrase = database.phrasesDAO().getById(phraseId)
-            wordsAnalysisAdapter.phrase = phrase
+            phrase = database.phrasesDAO().getById(phraseId)
+            wordsAnalysisAdapter.phrase = phrase!!
             wordsAnalysisAdapter.processPhrase(applicationContext)
             runOnUiThread {
-                txtLanguage.text = PhraseLanguageCommons(applicationContext, phrase).getFlagEmoji()
-                txtText.text = phrase.text
-                if (phrase.romaji != "") {
-                    txtRomaji.text = phrase.romaji
+                txtLanguage.text = PhraseLanguageCommons(applicationContext, phrase!!).getFlagEmoji()
+                txtText.text = phrase!!.text
+                if (phrase!!.romaji != "") {
+                    txtRomaji.text = phrase!!.romaji
                     layoutRomaji.visibility = View.VISIBLE
                 } else {
                     layoutRomaji.visibility = View.GONE
                 }
-                txtTranslation.text = phrase.translation
+                txtTranslation.text = phrase!!.translation
                 wordsAnalysisAdapter.notifyDataSetChanged()
             }
         }.start()

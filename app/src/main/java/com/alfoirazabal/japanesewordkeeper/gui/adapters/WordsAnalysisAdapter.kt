@@ -20,7 +20,9 @@ class WordsAnalysisAdapter : RecyclerView.Adapter<WordsAnalysisAdapter.ViewHolde
     private var defaultOrderTextColor : Int = 0
     private var defaultJapaneseWordTextColor : Int = 0
 
-    val highlitedWords : MutableList<JWKTokenizer.Word> = ArrayList()
+    val highlightedWords : MutableList<JWKTokenizer.Word> = ArrayList()
+
+    var onWordHighlightChanged : () -> Unit = { }
 
     private val romajinizer = HiraKataRomajinizer()
 
@@ -100,16 +102,17 @@ class WordsAnalysisAdapter : RecyclerView.Adapter<WordsAnalysisAdapter.ViewHolde
             this.printWordMeaning(holder, word, meaning)
         }
         val setWordHighlight = fun(_: View) {
-            if (this.highlitedWords.contains(word)) {
-                this.highlitedWords.remove(word)
+            if (this.highlightedWords.contains(word)) {
+                this.highlightedWords.remove(word)
             } else {
-                this.highlitedWords.add(word)
+                this.highlightedWords.add(word)
             }
+            this.onWordHighlightChanged.invoke()
             this.notifyItemChanged(position)
         }
         holder.txtOrder.setOnClickListener(setWordHighlight)
         holder.txtJapaneseWord.setOnClickListener(setWordHighlight)
-        if (this.highlitedWords.contains(word)) {
+        if (this.highlightedWords.contains(word)) {
             holder.txtOrder.setTextColor(Color.RED)
             holder.txtJapaneseWord.setTextColor(Color.RED)
         } else {
