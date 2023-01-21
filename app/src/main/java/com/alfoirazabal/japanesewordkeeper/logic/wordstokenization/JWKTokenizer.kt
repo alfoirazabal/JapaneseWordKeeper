@@ -1,6 +1,7 @@
 package com.alfoirazabal.japanesewordkeeper.logic.wordstokenization
 
 import android.content.Context
+import com.alfoirazabal.japanesewordkeeper.logic.wordstokenization.dictionary.DictionaryDefinerJapaneseEoEnglish
 import org.apache.lucene.analysis.Analyzer
 import org.apache.lucene.analysis.CharArraySet
 import org.apache.lucene.analysis.ja.JapaneseAnalyzer
@@ -51,9 +52,9 @@ class JWKTokenizer(
         tokenStream.close()
         analyzer.close()
 
-        val dictionaryJapaneseToEnglish = DictionaryJapaneseToEnglish(context)
+        val dictionaryDefinerJapaneseTokenizer = DictionaryDefinerJapaneseEoEnglish(context)
         for (token in tokens) {
-            val definitions = dictionaryJapaneseToEnglish.define(token)
+            val definitions = dictionaryDefinerJapaneseTokenizer.define(token)
             val meanings = ArrayList<Meaning>(definitions.size)
             definitions.forEach {
                 val meaning = Meaning(

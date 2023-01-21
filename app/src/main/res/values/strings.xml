@@ -57,4 +57,8 @@
     <string name="downloaded">Downloaded</string>
     <string name="msg_downloading_languages_check_notifications">Translation languages are being downloaded. Check the notifications for progress...</string>
     <string name="msg_translation_languages_download_finished">Translation languages download finished</string>
+    <string name="dictionary">Dictionary</string>
+    <string name="search_word_in_english_or_japanese">Search word in english or japanese</string>
+    <string name="enter_search_term">Enter search term</string>
+    <string name="msg_loading_dictionary">Loading dictionary</string>
 </resources>

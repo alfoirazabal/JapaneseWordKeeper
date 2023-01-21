@@ -32,6 +32,7 @@
         <activity android:name=".gui.AppSettings" />
         <activity android:name=".gui.SymbolsOverview" />
         <activity android:name=".gui.WordsAnalysis" />
+        <activity android:name=".gui.SearchOnDictionary" />
     </application>
 
 </manifest>
