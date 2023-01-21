@@ -22,7 +22,7 @@ class MeaningParser {
                     )
                     definitionMeaningDescriptors.add(meaningDescriptor)
                     descriptorStringBuilder = StringBuilder()
-                    if (x + 2 != rawMeaning.length && rawMeaning[x + 2] != '(') {
+                    if (x + 2 < rawMeaning.length && rawMeaning[x + 2] != '(') {
                         endDescriptorParser = true
                     }
                     x += 2
