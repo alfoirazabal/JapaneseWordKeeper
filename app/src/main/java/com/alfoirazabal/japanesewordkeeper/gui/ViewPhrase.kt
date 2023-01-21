@@ -8,8 +8,6 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
-import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import com.alfoirazabal.japanesewordkeeper.R
 import com.alfoirazabal.japanesewordkeeper.db.Database
 import com.alfoirazabal.japanesewordkeeper.db.entities.Phrase
@@ -26,10 +24,11 @@ class ViewPhrase : AppCompatActivity() {
     private lateinit var txtRomaji : TextView
     private lateinit var txtTranslation : TextView
     private lateinit var imgPlayTranslationSound : ImageView
+    private lateinit var btnWordAnalysis : Button
+    private lateinit var btnSymbolsOverview : Button
     private lateinit var txtDateCreated : TextView
     private lateinit var txtDateModified : TextView
     private lateinit var txtDateLastAccessed : TextView
-    private lateinit var recyclerViewSymbolsOverview : RecyclerView
     private lateinit var btnEdit : Button
     private lateinit var btnDelete : Button
 
@@ -40,8 +39,6 @@ class ViewPhrase : AppCompatActivity() {
 
     private var firstTimeAccessed : Boolean = true
 
-    private lateinit var adapterPhraseCharacters : PhraseAdapterCharacters
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_view_phrase)
@@ -51,16 +48,13 @@ class ViewPhrase : AppCompatActivity() {
         txtRomaji = findViewById(R.id.txt_romaji)
         txtTranslation = findViewById(R.id.txt_translation)
         imgPlayTranslationSound = findViewById(R.id.img_hear_translation)
+        btnWordAnalysis = findViewById(R.id.btn_word_analysis)
+        btnSymbolsOverview = findViewById(R.id.btn_symbols_overview)
         txtDateCreated = findViewById(R.id.txt_date_created)
         txtDateModified = findViewById(R.id.txt_date_modified)
         txtDateLastAccessed = findViewById(R.id.txt_date_last_accessed)
-        recyclerViewSymbolsOverview = findViewById(R.id.recyclerview_symbols_overview)
         btnEdit = findViewById(R.id.btn_edit)
         btnDelete = findViewById(R.id.btn_delete)
-
-        adapterPhraseCharacters = PhraseAdapterCharacters()
-        recyclerViewSymbolsOverview.layoutManager = LinearLayoutManager(applicationContext)
-        recyclerViewSymbolsOverview.adapter = adapterPhraseCharacters
 
         phraseId = intent.getStringExtra(BundleConstants.phraseId)!!
 
@@ -109,6 +103,18 @@ class ViewPhrase : AppCompatActivity() {
             }
         }
 
+        btnSymbolsOverview.setOnClickListener {
+            val intentSymbolsOverview = Intent(applicationContext, SymbolsOverview::class.java)
+            intentSymbolsOverview.putExtra(BundleConstants.phraseId, phraseId)
+            startActivity(intentSymbolsOverview)
+        }
+
+        btnWordAnalysis.setOnClickListener {
+            val intentViewWordsAnalysis = Intent(applicationContext, WordsAnalysis::class.java)
+            intentViewWordsAnalysis.putExtra(BundleConstants.phraseId, phraseId)
+            startActivity(intentViewWordsAnalysis)
+        }
+
     }
 
     override fun onResume() {
@@ -140,8 +146,10 @@ class ViewPhrase : AppCompatActivity() {
                 txtDateModified.text = phrase!!.dateModified.toString()
                 txtDateLastAccessed.text = phrase!!.dateLastAccessed.toString()
 
-                adapterPhraseCharacters.setPhrase(phrase!!.translation, applicationContext)
-                adapterPhraseCharacters.notifyDataSetChanged()
+                /*val tokenizer = JWKTokenizer(applicationContext)
+                val words = tokenizer.fetchWords(phrase!!.translation)
+                println(words)*/
+
             }
         }.start()
     }

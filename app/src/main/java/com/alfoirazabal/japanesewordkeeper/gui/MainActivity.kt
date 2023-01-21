@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.alfoirazabal.japanesewordkeeper.R
 import com.alfoirazabal.japanesewordkeeper.db.Database
+import com.alfoirazabal.japanesewordkeeper.gui.adapters.PhraseAdapter
 import com.alfoirazabal.japanesewordkeeper.gui.constants.BundleConstants
 import com.alfoirazabal.japanesewordkeeper.gui.helpers.PhrasesSorter
 
@@ -49,9 +50,6 @@ class MainActivity : AppCompatActivity() {
             intentViewPhrase.putExtra(BundleConstants.phraseId, phraseId)
             startActivity(intentViewPhrase)
         }
-
-        // val symbols = SymbolsParser.parseSymbols("前方の道路には霧が多すぎる。 これは大量虐殺の覇権エリートのグループです。", applicationContext)
-        // println("OK")
 
     }
 

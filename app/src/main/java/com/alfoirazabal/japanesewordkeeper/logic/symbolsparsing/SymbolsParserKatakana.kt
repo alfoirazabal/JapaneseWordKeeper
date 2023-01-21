@@ -96,6 +96,63 @@ class SymbolsParserKatakana {
         katakanaSymbols.add(KatakanaSymbol(symbol = "ペ", pronunciation = "pe"))
         katakanaSymbols.add(KatakanaSymbol(symbol = "ポ", pronunciation = "po"))
 
+        katakanaSymbols.add(KatakanaSymbol(symbol = "ソ", pronunciation = "n"))
+
+        return katakanaSymbols
+    }
+
+    fun getDigraphs() : List<KatakanaSymbol> {
+
+        val katakanaSymbols = ArrayList<KatakanaSymbol>()
+
+        katakanaSymbols.add(KatakanaSymbol(symbol = "キャ", pronunciation = "kya"))
+        katakanaSymbols.add(KatakanaSymbol(symbol = "キュ", pronunciation = "kyu"))
+        katakanaSymbols.add(KatakanaSymbol(symbol = "キョ", pronunciation = "kyo"))
+
+        katakanaSymbols.add(KatakanaSymbol(symbol = "シャ", pronunciation = "sha"))
+        katakanaSymbols.add(KatakanaSymbol(symbol = "シュ", pronunciation = "shu"))
+        katakanaSymbols.add(KatakanaSymbol(symbol = "ショ", pronunciation = "sho"))
+
+        katakanaSymbols.add(KatakanaSymbol(symbol = "チャ", pronunciation = "cha"))
+        katakanaSymbols.add(KatakanaSymbol(symbol = "チュ", pronunciation = "chu"))
+        katakanaSymbols.add(KatakanaSymbol(symbol = "チョ", pronunciation = "cho"))
+
+        katakanaSymbols.add(KatakanaSymbol(symbol = "ニャ", pronunciation = "nya"))
+        katakanaSymbols.add(KatakanaSymbol(symbol = "ニュ", pronunciation = "nyu"))
+        katakanaSymbols.add(KatakanaSymbol(symbol = "ニョ", pronunciation = "nyo"))
+
+        katakanaSymbols.add(KatakanaSymbol(symbol = "ヒャ", pronunciation = "hya"))
+        katakanaSymbols.add(KatakanaSymbol(symbol = "ヒュ", pronunciation = "hyu"))
+        katakanaSymbols.add(KatakanaSymbol(symbol = "ヒョ", pronunciation = "hyo"))
+
+        katakanaSymbols.add(KatakanaSymbol(symbol = "ミャ", pronunciation = "mya"))
+        katakanaSymbols.add(KatakanaSymbol(symbol = "ミュ", pronunciation = "myu"))
+        katakanaSymbols.add(KatakanaSymbol(symbol = "ミョ", pronunciation = "myo"))
+
+        katakanaSymbols.add(KatakanaSymbol(symbol = "リャ", pronunciation = "rya"))
+        katakanaSymbols.add(KatakanaSymbol(symbol = "リュ", pronunciation = "ryu"))
+        katakanaSymbols.add(KatakanaSymbol(symbol = "リョ", pronunciation = "ryo"))
+
+        katakanaSymbols.add(KatakanaSymbol(symbol = "ギャ", pronunciation = "gya"))
+        katakanaSymbols.add(KatakanaSymbol(symbol = "ギュ", pronunciation = "gyu"))
+        katakanaSymbols.add(KatakanaSymbol(symbol = "ギョ", pronunciation = "gyo"))
+
+        katakanaSymbols.add(KatakanaSymbol(symbol = "ジャ", pronunciation = "ja"))
+        katakanaSymbols.add(KatakanaSymbol(symbol = "ジュ", pronunciation = "ju"))
+        katakanaSymbols.add(KatakanaSymbol(symbol = "ジョ", pronunciation = "jo"))
+
+        katakanaSymbols.add(KatakanaSymbol(symbol = "ヂャ", pronunciation = "ja"))
+        katakanaSymbols.add(KatakanaSymbol(symbol = "ヂュ", pronunciation = "ju"))
+        katakanaSymbols.add(KatakanaSymbol(symbol = "ヂョ", pronunciation = "jo"))
+
+        katakanaSymbols.add(KatakanaSymbol(symbol = "ビャ", pronunciation = "bya"))
+        katakanaSymbols.add(KatakanaSymbol(symbol = "ビュ", pronunciation = "byu"))
+        katakanaSymbols.add(KatakanaSymbol(symbol = "ビョ", pronunciation = "byo"))
+
+        katakanaSymbols.add(KatakanaSymbol(symbol = "ピャ", pronunciation = "pya"))
+        katakanaSymbols.add(KatakanaSymbol(symbol = "ピュ", pronunciation = "pyu"))
+        katakanaSymbols.add(KatakanaSymbol(symbol = "ピョ", pronunciation = "pyo"))
+
         return katakanaSymbols
     }
 

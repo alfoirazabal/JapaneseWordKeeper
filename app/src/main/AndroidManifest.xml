@@ -30,7 +30,8 @@
         <activity android:name=".gui.EditPhrase" />
         <activity android:name=".gui.ViewPhrase" />
         <activity android:name=".gui.AppSettings" />
-        <activity android:name=".gui.DownloadTranslationModels" />
+        <activity android:name=".gui.SymbolsOverview" />
+        <activity android:name=".gui.WordsAnalysis" />
     </application>
 
 </manifest>
