@@ -1,6 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android">
+<menu xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/menu_item_dictionary"
+        android:icon="@drawable/ic_dictionary"
+        android:title="@string/dictionary"
+        app:showAsAction="always" />
     <item
         android:id="@+id/menu_item_settings"
-        android:title="@string/settings" />
+        android:icon="@drawable/ic_settings"
+        android:title="@string/settings"
+        app:showAsAction="always" />
 </menu>

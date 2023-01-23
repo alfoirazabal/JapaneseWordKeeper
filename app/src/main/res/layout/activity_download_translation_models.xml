@@ -65,6 +65,62 @@
                 android:layout_gravity="center_vertical" />
         </TableRow>
 
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:text="@string/japanese_to_english" />
+
+            <TextView
+                android:id="@+id/txt_downloading_japanese_to_english"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginEnd="8pt"
+                android:layout_weight="1"
+                android:text="@string/downloading"
+                android:textAlignment="viewEnd" />
+
+            <ProgressBar
+                android:id="@+id/pbr_downloading_japanese_to_english"
+                style="?android:attr/progressBarStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:text="@string/japanese_to_spanish" />
+
+            <TextView
+                android:id="@+id/txt_downloading_japanese_to_spanish"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginEnd="8pt"
+                android:layout_weight="1"
+                android:text="@string/downloading"
+                android:textAlignment="viewEnd" />
+
+            <ProgressBar
+                android:id="@+id/pbr_downloading_japanese_to_spanish"
+                style="?android:attr/progressBarStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical" />
+        </TableRow>
+
     </TableLayout>
 
     <Space

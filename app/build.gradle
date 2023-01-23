@@ -13,7 +13,7 @@ android {
         minSdk 19
         targetSdk 33
         versionCode 1
-        versionName "1.0"
+        versionName "2.0"
 
         multiDexEnabled true
 
@@ -46,6 +46,9 @@ android {
 
 dependencies {
 
+    implementation files('..\\libs\\lucene-analyzers-3.6.2.jar')
+    implementation files('..\\libs\\lucene-core-3.6.2.jar')
+    implementation files('..\\libs\\lucene-kuromoji-3.6.2.jar')
     def room_version = "2.5.0"
 
     implementation "androidx.room:room-runtime:$room_version"
