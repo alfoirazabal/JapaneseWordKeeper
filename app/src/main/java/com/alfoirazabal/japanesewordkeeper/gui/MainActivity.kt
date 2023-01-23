@@ -68,9 +68,16 @@ class MainActivity : AppCompatActivity() {
         menuInflater.inflate(R.menu.activity_main_menu, menu)
 
         val settingsMenuItem = menu.findItem(R.id.menu_item_settings)
+        val dictionaryMenuItem = menu.findItem(R.id.menu_item_dictionary)
+
         settingsMenuItem.setOnMenuItemClickListener {
             val settingsIntent = Intent(applicationContext, AppSettings::class.java)
             startActivity(settingsIntent)
+            true
+        }
+        dictionaryMenuItem.setOnMenuItemClickListener {
+            val dictionaryIntent = Intent(applicationContext, SearchOnDictionary::class.java)
+            startActivity(dictionaryIntent)
             true
         }
 

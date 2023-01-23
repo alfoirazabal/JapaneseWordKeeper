@@ -2,30 +2,19 @@ package com.alfoirazabal.japanesewordkeeper.logic.wordstokenization
 
 import android.content.Context
 import com.alfoirazabal.japanesewordkeeper.logic.wordstokenization.dictionary.EDICTDefinitionBuilderHelper
+import com.alfoirazabal.japanesewordkeeper.logic.wordstokenization.dictionary.domain.Definition
 import java.io.BufferedReader
 import java.io.InputStreamReader
 
-class DictionaryJapaneseToEnglish(private var context: Context) {
+object DictionaryJapaneseToEnglish {
 
-    class Definition(
-        val word : String,
-        val pronunciation : String,
-        val definitions : Array<String>
-    )
+    private var definitions : MutableList<Definition>? = null
 
-    companion object {
-        private var definitionsBuilt = false
-        private lateinit var definitions : MutableList<Definition>
-    }
+    var onDictionaryLoading : () -> Unit = { }
+    var onDictionaryLoaded : () -> Unit = { }
 
-    init {
-        if (!definitionsBuilt) {
-            buildDictionary()
-        }
-    }
-
-    private fun buildDictionary() {
-        definitions = ArrayList()
+    private fun buildDictionary(context : Context) {
+        this.definitions = ArrayList()
         val definitionBuilderHelper = EDICTDefinitionBuilderHelper()
         context.assets.open("dictionaries/edict").use { inputStream ->
             InputStreamReader(inputStream, "EUC-JP").use { inputStreamReader ->
@@ -42,28 +31,20 @@ class DictionaryJapaneseToEnglish(private var context: Context) {
                             pronunciation = japaneseParts[1],
                             definitions = definitions
                         )
-                        DictionaryJapaneseToEnglish.definitions.add(definition)
+                        this.definitions!!.add(definition)
                     }
                 }
             }
         }
-        definitionsBuilt = true
     }
 
-    fun define(word : String) : List<Definition> {
-        val definitionsForWord = ArrayList<Definition>()
-        var found = false
-        for (definition in definitions) {
-            if (definition.word == word || definition.word == "$word ") {
-                definitionsForWord.add(definition)
-                found = true
-            } else {
-                if (found) {
-                    break
-                }
-            }
+    fun getDefinitions(context : Context) : List<Definition> {
+        if (this.definitions == null) {
+            this.onDictionaryLoading.invoke()
+            this.buildDictionary(context)
         }
-        return definitionsForWord
+        this.onDictionaryLoaded.invoke()
+        return this.definitions!!
     }
 
 }

@@ -57,4 +57,16 @@
     <string name="downloaded">Downloaded</string>
     <string name="msg_downloading_languages_check_notifications">Translation languages are being downloaded. Check the notifications for progress...</string>
     <string name="msg_translation_languages_download_finished">Translation languages download finished</string>
+    <string name="dictionary">Dictionary</string>
+    <string name="search_word_in_english_or_japanese">Search word in english or japanese</string>
+    <string name="enter_search_term">Enter search term</string>
+    <string name="msg_loading_dictionary">Loading dictionary</string>
+    <string name="pronunciation">Pronunciation</string>
+    <string name="copy">Copy</string>
+    <string name="word">Word</string>
+    <string name="definition">Definition</string>
+    <string name="definition_and_meanings">Definition and meanings</string>
+    <string name="listen">Listen</string>
+    <string name="save">Save</string>
+    <string name="msg_will_be_implemented_in_upcoming_releases">Will be implemented in upcoming releases</string>
 </resources>
