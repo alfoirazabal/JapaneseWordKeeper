@@ -9,6 +9,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="TextView"
+        android:textColor="#910000"
         android:textStyle="italic" />
 
     <TextView
@@ -20,5 +21,7 @@
     <View
         android:layout_width="match_parent"
         android:layout_height="1dp"
+        android:layout_marginTop="1pt"
+        android:layout_marginBottom="2pt"
         android:background="?android:attr/listDivider" />
 </LinearLayout>

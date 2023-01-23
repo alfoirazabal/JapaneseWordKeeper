@@ -3,7 +3,7 @@ package com.alfoirazabal.japanesewordkeeper.logic.wordstokenization.dictionary
 class EDICTDefinitionBuilderHelper {
 
     fun parseDefinitions(definitionPart: String): Array<String> {
-        return definitionPart.split("/").toTypedArray()
+        return definitionPart.split("/").filter { it != "" }.toTypedArray()
     }
 
     fun parseJapaneseParts(japaneseParts: String): Array<String> {
