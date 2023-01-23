@@ -7,8 +7,10 @@ import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.ProgressBar
 import androidx.appcompat.app.AppCompatActivity
+import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.alfoirazabal.japanesewordkeeper.R
+import com.alfoirazabal.japanesewordkeeper.gui.adapters.DefinitionAdapter
 import com.alfoirazabal.japanesewordkeeper.logic.wordstokenization.dictionary.DictionarySearcherJapaneseEnglish
 import java.util.concurrent.atomic.AtomicBoolean
 
@@ -19,6 +21,8 @@ class SearchOnDictionary : AppCompatActivity() {
     private lateinit var layoutLodingDictionary : LinearLayout
     private lateinit var pbrDictionaryWordsSearch : ProgressBar
     private lateinit var recyclerviewFoundWords : RecyclerView
+
+    private val definitionsAdapter = DefinitionAdapter()
 
     private val stopSearch = AtomicBoolean(false)
 
@@ -32,7 +36,11 @@ class SearchOnDictionary : AppCompatActivity() {
         pbrDictionaryWordsSearch = findViewById(R.id.pbr_dictionary_words_search)
         recyclerviewFoundWords = findViewById(R.id.recyclerview_found_words)
 
+        recyclerviewFoundWords.layoutManager = LinearLayoutManager(applicationContext)
+        recyclerviewFoundWords.adapter = definitionsAdapter
+
         imgbtnSearch.setOnClickListener {
+            definitionsAdapter.resetDefinitions()
             pbrDictionaryWordsSearch.progress = 0
             pbrDictionaryWordsSearch.visibility = View.VISIBLE
             imgbtnSearch.isEnabled = false
@@ -53,8 +61,9 @@ class SearchOnDictionary : AppCompatActivity() {
                 }
             }
             dictionarySearcher.onResultFound = { definition ->
-                println(definition.definitions.contentToString())
-                // TODO add to recyclerview
+                runOnUiThread {
+                    definitionsAdapter.addDefinition(definition)
+                }
             }
             dictionarySearcher.onFinished = {
                 runOnUiThread {
