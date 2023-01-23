@@ -62,4 +62,11 @@
     <string name="enter_search_term">Enter search term</string>
     <string name="msg_loading_dictionary">Loading dictionary</string>
     <string name="pronunciation">Pronunciation</string>
+    <string name="copy">Copy</string>
+    <string name="word">Word</string>
+    <string name="definition">Definition</string>
+    <string name="definition_and_meanings">Definition and meanings</string>
+    <string name="listen">Listen</string>
+    <string name="save">Save</string>
+    <string name="msg_will_be_implemented_in_upcoming_releases">Will be implemented in upcoming releases</string>
 </resources>
