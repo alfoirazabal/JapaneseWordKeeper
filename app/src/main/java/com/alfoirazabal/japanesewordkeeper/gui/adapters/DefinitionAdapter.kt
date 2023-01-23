@@ -4,7 +4,6 @@ import android.speech.tts.TextToSpeech
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -42,14 +41,9 @@ class DefinitionAdapter : RecyclerView.Adapter<DefinitionAdapter.ViewHolder>() {
 
     }
 
-    fun addDefinition(definition : Definition) {
-        this.definitions.add(definition)
-        this.notifyItemInserted(this.definitions.size - 1)
-    }
-
-    fun resetDefinitions() {
+    fun setDefinitions(definitions : List<Definition>) {
         this.definitions.clear()
-        this.notifyItemRangeRemoved(0, this.itemCount)
+        this.definitions.addAll(definitions)
     }
 
     override fun onCreateViewHolder(viewGroup: ViewGroup, viewType: Int): ViewHolder {

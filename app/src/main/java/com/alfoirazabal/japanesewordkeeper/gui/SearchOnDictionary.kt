@@ -11,8 +11,12 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.alfoirazabal.japanesewordkeeper.R
 import com.alfoirazabal.japanesewordkeeper.gui.adapters.DefinitionAdapter
+import com.alfoirazabal.japanesewordkeeper.logic.sorting.DefinitionsComparators
 import com.alfoirazabal.japanesewordkeeper.logic.wordstokenization.dictionary.DictionarySearcherJapaneseEnglish
+import com.alfoirazabal.japanesewordkeeper.logic.wordstokenization.dictionary.domain.Definition
+import java.util.*
 import java.util.concurrent.atomic.AtomicBoolean
+import kotlin.collections.ArrayList
 
 class SearchOnDictionary : AppCompatActivity() {
 
@@ -40,7 +44,7 @@ class SearchOnDictionary : AppCompatActivity() {
         recyclerviewFoundWords.adapter = definitionsAdapter
 
         imgbtnSearch.setOnClickListener {
-            definitionsAdapter.resetDefinitions()
+            val definitions = ArrayList<Definition>()
             pbrDictionaryWordsSearch.progress = 0
             pbrDictionaryWordsSearch.visibility = View.VISIBLE
             imgbtnSearch.isEnabled = false
@@ -61,15 +65,18 @@ class SearchOnDictionary : AppCompatActivity() {
                 }
             }
             dictionarySearcher.onResultFound = { definition ->
-                runOnUiThread {
-                    definitionsAdapter.addDefinition(definition)
-                }
+                definitions.add(definition)
             }
             dictionarySearcher.onFinished = {
+                val definitionsComparators = DefinitionsComparators()
+                val comparator = definitionsComparators.getSearchTermComparator(searchText)
+                Collections.sort(definitions, comparator.reversed())
                 runOnUiThread {
                     imgbtnSearch.isEnabled = true
                     pbrDictionaryWordsSearch.progress = 0
                     pbrDictionaryWordsSearch.visibility = View.GONE
+                    definitionsAdapter.setDefinitions(definitions)
+                    definitionsAdapter.notifyDataSetChanged()
                 }
             }
             Thread {
